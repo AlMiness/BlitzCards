@@ -15,7 +15,7 @@ const getConfirmationDiscardEmbed = async (cardID) => {
 	.setTitle('Confirmation')
     .addFields({
 		name: `Êtes-vous sûr de vouloir défausser ${card.playerData.playerName} d'une rareté ${card.rarity} ?`,
-		value:`Vous obtiendrez ${constants.DISCARDPOINTSDICO[card.rarity]} points!`
+		value:`Vous obtiendrez ${constants.DISCARDPOINTSDICO[card.rarity]} point${Number(constants.DISCARDPOINTSDICO[card.rarity]) > 1 ? 's' : ''}!`
 
 	})
     .setTimestamp()
@@ -89,7 +89,7 @@ const getDiscardedEmbed = (givenPoints) => {
 	.setTitle('Défaussage effectué')
     .addFields({
 		name: `Votre carte a bien été défaussée`,
-		value:`Vous avez obtenu ${givenPoints.toString()} points`
+		value:`Vous avez obtenu ${givenPoints.toString()} point${givenPoints > 1 ? 's' : ''}`
 	})
 	return sellConfirmationEmbed
 }
