@@ -350,7 +350,7 @@ const isCardAlreadyPickedByUser = async (discordID, playerID, rarity) => {
 }
 
 const updateUserName = async (discordID, name) => {
-    name = name.replace("'", "").replace("`", "").replace('"', "")
+    name = name.replace(/'/g, "");
     let updateUserNameQuery = `UPDATE ${usersDataTB} SET 'name' = '${name}' WHERE discordID = '${discordID.toString()}'`
     await DB.run(updateUserNameQuery)
 }
